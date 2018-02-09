@@ -1,0 +1,26 @@
+{
+  "name": "need-for-blood-api",
+  "version": "1.0.0",
+  "description": "API for need for blood app",
+  "main": "app.js",
+  "scripts": {
+    "start": "babel-node app.js --presets es2015,stage-2",
+    "seed-countries": "babel-node seed-data/countries.js --presets es2015,stage-2",
+    "seed-bloodGroups": "babel-node seed-data/bloodGroups.js --presets es2015,stage-2"
+  },
+  "author": "Vishal Sherathiya",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.6.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "isvalid": "^1.6.6",
+    "mongoose": "^5.0.3",
+    "multer": "^1.3.0",
+    "restify": "^6.3.4",
+    "twilio": "^3.11.2"
+  }
+}
