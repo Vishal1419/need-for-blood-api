@@ -153,6 +153,16 @@ export default {
     unknownKeys: 'allow',
     required: true,
     schema: {
+      profilePicture: {
+        type: String,
+        required: false,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.PROFILE_PICTURE_INVALID_DT
+          }
+        }
+      },
       name: {
         type: String,
         trim: true,
@@ -287,6 +297,212 @@ export default {
         return cb({ message: { errorCode: BloodResponse.REQUIRED_FIELD, message: constants.MOBILE_NUMBER_REQUIRED } });
       }
       cb(null, data);
+    },
+    errors: {
+      required: {
+        errorCode: BloodResponse.REQUIRED_FIELD,
+        message: constants.DETAILS_REQUIRED
+      }
+    }
+  },
+  donorOrSeekerInSameGroup: {
+    type: Object,
+    unknownKeys: 'allow',
+    required: true,
+    schema: {
+      bloodGroup: {
+        type: String,
+        trim: true,
+        required: true,
+        match: /^.{1,}$/,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.BLOOD_GROUP_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.BLOOD_GROUP_REQUIRED
+          },
+          match: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.BLOOD_GROUP_REQUIRED
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.BLOOD_GROUP_REQUIRED
+          }
+        }
+      },
+      countryCode: {
+        type: String,
+        trim: true,
+        required: true,
+        match: /^.{1,}$/,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.COUNTRY_CODE_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.COUNTRY_CODE_REQUIRED
+          },
+          match: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.COUNTRY_CODE_REQUIRED
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.COUNTRY_CODE_REQUIRED
+          }
+        }
+      },
+      mobileNo: {
+        type: String,
+        required: true,
+        trim: true,
+        match: /^\d{10}$/,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.MOBILE_NUMBER_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.MOBILE_NUMBER_REQUIRED
+          },
+          match: {
+            errorCode: BloodResponse.PATTERN_NOT_MATCH,
+            message: constants.MOBILE_NUMBER_PATTERN
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.MOBILE_NUMBER_REQUIRED
+          }
+        }
+      }
+    },
+    errors: {
+      required: {
+        errorCode: BloodResponse.REQUIRED_FIELD,
+        message: constants.DETAILS_REQUIRED
+      }
+    }
+  },
+  donateOrSeekBlood: {
+    type: Object,
+    unknownKeys: 'allow',
+    required: true,
+    schema: {
+      bloodGroup: {
+        type: String,
+        trim: true,
+        required: true,
+        match: /^.{1,}$/,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.BLOOD_GROUP_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.BLOOD_GROUP_REQUIRED
+          },
+          match: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.BLOOD_GROUP_REQUIRED
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.BLOOD_GROUP_REQUIRED
+          }
+        }
+      },
+      longitude: {
+        type: Number,
+        required: true,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.LONGITUDE_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.LONGITUDE_REQUIRED
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.LONGITUDE_REQUIRED
+          }
+        }
+      },
+      latitude: {
+        type: Number,
+        required: true,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.LATITUDE_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.LATITUDE_REQUIRED
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.LATITUDE_REQUIRED
+          }
+        }
+      },
+      countryCode: {
+        type: String,
+        trim: true,
+        required: true,
+        match: /^.{1,}$/,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.COUNTRY_CODE_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.COUNTRY_CODE_REQUIRED
+          },
+          match: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.COUNTRY_CODE_REQUIRED
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.COUNTRY_CODE_REQUIRED
+          }
+        }
+      },
+      mobileNo: {
+        type: String,
+        required: true,
+        trim: true,
+        match: /^\d{10}$/,
+        errors: {
+          type: {
+            errorCode: BloodResponse.INVALID_DATA_TYPE,
+            message: constants.MOBILE_NUMBER_INVALID_DT
+          },
+          required: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.MOBILE_NUMBER_REQUIRED
+          },
+          match: {
+            errorCode: BloodResponse.PATTERN_NOT_MATCH,
+            message: constants.MOBILE_NUMBER_PATTERN
+          },
+          allowNull: {
+            errorCode: BloodResponse.REQUIRED_FIELD,
+            message: constants.MOBILE_NUMBER_REQUIRED
+          }
+        }
+      }
     },
     errors: {
       required: {

@@ -2,12 +2,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import * as config from './app_config';
+import './db';
+
 import countryRoute from './routes/country';
 import bloodGroupRoute from './routes/bloodGroup';
 import otpRoute from './routes/otp';
 import userRoute from './routes/user';
 
-import './db';
 
 const app = express();
 

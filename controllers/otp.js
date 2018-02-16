@@ -38,13 +38,14 @@ export const saveOTPInfo = (req, res) => {
     },
     (newOTP, callback) => {
       //send SMS using Twilio
-      twilio.messages.create({
-        body: `Your OTP is ${newOTP}`,
-        to: req.body.countryCode + req.body.mobileNo,
-        from: '+19728611015'
-      }).then(() => {
-        callback(null, newOTP)
-      });
+      // twilio.messages.create({
+      //   body: `Your OTP is ${newOTP}`,
+      //   to: req.body.countryCode + req.body.mobileNo,
+      //   from: '+19728611015'
+      // }).then(() => {
+      //   callback(null, newOTP)
+      // });
+      callback(null, newOTP);
     },
     (newOTP, callback) => {
       OTPInfo.createOTPInfo({

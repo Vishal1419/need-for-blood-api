@@ -20,7 +20,7 @@ BloodGroup.getById = (id, callback) => {
 };
 
 BloodGroup.getByName = (name, callback) => {
-  BloodGroup.find({ name: new RegExp('^' + name + '$', "i") }).sort('name').exec((err, bloodGroups) => {
+  BloodGroup.find({ name: name }).sort('name').exec((err, bloodGroups) => {
     callback(err, bloodGroups);
   });
 };
@@ -31,14 +31,14 @@ BloodGroup.createBloodGroup = (bloodGroup, callback) => {
 };
 
 BloodGroup.updateBloodGroup = (bloodGroup, callback) => {
-  BloodGroup.update(
+  BloodGroup.findOneAndUpdate(
     { "_id": bloodGroup._id },
     {
       "$set": {
         "name": bloodGroup.name
       }
     },
-    { multi: false },
+    { new: true },
     callback
   );
 };
